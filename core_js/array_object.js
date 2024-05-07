@@ -3,7 +3,7 @@ arr.push(10);
 arr.push(20);
 arr.push(30);
 arr.push(40);
-console.log(arr)
+console.log(arr);
 
 arr.pop();
 arr.shift();
