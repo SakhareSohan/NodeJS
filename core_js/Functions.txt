@@ -1,0 +1,24 @@
+Functions:
+
+	Normal Function:
+Defined using the function keyword followed by a function name.
+Suitable for reusable code blocks, often with a specific name for referencing and reusability.
+Can access the arguments object and has its own this context.
+
+	Arrow Function:
+Introduced in ES6, providing a more concise syntax using the fat arrow (=>) notation.
+Primarily used for short, single-expression functions.
+Lexically binds this, meaning it uses this value from the surrounding code.
+Does not have its own arguments object or this context.
+
+	Anonymous Function:
+A function without a name.
+Often used for short, one-off functions or as parameters to other functions.
+Can be defined using function expressions or arrow functions.
+Does not have a specific name for referencing and reusability.
+
+	Generator Function:
+Introduced in ES6, denoted by the function* syntax.
+Allows you to control the iteration process explicitly, yielding values using the yield keyword.
+Pauses and resumes execution, retaining its state between calls to next().
+Useful for implementing custom iteration behavior, lazy evaluation, and asynchronous programming.

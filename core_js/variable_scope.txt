@@ -1,0 +1,35 @@
+
+Variables:
+Var – Declare a variable (re-declarable, functional, re-assign)
+Let – Declare a block variable (re-Assign, Block, no – reassign)
+Const – Declare a block constant (re No-reassign, Block)
+	A new Array (No – reassigning, change elements and push too)
+	A new Object
+	A new Function
+	A new RegExp
+Hoisting is the ability to use before declaring but initiation value cannot be access earlier.
+
+Binds this:
+In a global context or when a function is called without an object reference, this refers to the global object (in a browser, window object).
+Inside a function that is called as a method of an object, this refers to the object itself.
+The value of this can also be explicitly set using call(), apply(), or bind().
+
+Datatypes:
+1. String
+2. Number
+3. Bigint
+4. Boolean
+5. Undefined
+6. Null
+7. Symbol
+8. Object
+	1. An object
+	2. An array
+	3. A date
+
+In an object method, this refers to the object.
+Alone, this refers to the global object.
+In a function, this refers to the global object.
+In a function, in strict mode, this is undefined.
+In an event, this refers to the element that received the event.
+Methods like call(), apply(), and bind() can refer this to any object.
