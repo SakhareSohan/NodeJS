@@ -1,0 +1,169 @@
+Types of Functions in JavaScript
+>Function Declaration
+>Function Expression
+>Arrow Functions
+>Anonymous Functions
+>Immediately Invoked Function Expressions (IIFE)
+>Higher-Order Functions
+>Callback Functions
+>Recursive Functions
+
+.Function Declaration
+A function declared with the function keyword can be called before it is defined.
+
+javascript
+Copy code
+// Function Declaration
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+console.log(greet("Alice"));
+
+.Function Expression
+A function assigned to a variable. It is called using the variable name and cannot be called before it is defined.
+
+javascript
+Copy code
+// Function Expression
+const greet = function(name) {
+  return `Hello, ${name}!`;
+};
+console.log(greet("Bob"));
+
+.Arrow Functions
+A shorter syntax introduced in ES6. They do not have their own this context.
+
+javascript
+Copy code
+// Arrow Function
+const greet = (name) => `Hello, ${name}!`;
+console.log(greet("Charlie"));
+
+.Anonymous Functions
+Functions without a name, often used as arguments to other functions.
+
+javascript
+Copy code
+// Anonymous Function
+setTimeout(function() {
+  console.log("This is an anonymous function!");
+}, 1000);
+
+.Immediately Invoked Function Expressions (IIFE)
+A function that runs as soon as it is defined.
+
+javascript
+Copy code
+// IIFE
+(function() {
+  console.log("This function runs immediately!");
+})();
+
+.Higher-Order Functions
+Functions that take other functions as arguments or return them.
+
+javascript
+Copy code
+// Higher-Order Function
+function higherOrder(fn) {
+  fn();
+}
+
+function sayHello() {
+  console.log("Hello!");
+}
+
+higherOrder(sayHello);
+
+.Callback Functions
+Functions passed into other functions as arguments to be executed later.
+
+javascript
+Copy code
+// Callback Function
+function fetchData(callback) {
+  setTimeout(() => {
+    console.log("Data fetched");
+    callback();
+  }, 1000);
+}
+
+function processData() {
+  console.log("Processing data...");
+}
+
+fetchData(processData);
+
+.Recursive Functions
+Functions that call themselves.
+
+javascript
+Copy code
+// Recursive Function
+function factorial(n) {
+  if (n === 0) {
+    return 1;
+  }
+  return n * factorial(n - 1);
+}
+console.log(factorial(5)); // Output: 120
+Example Code
+Here's a complete example that includes different types of functions:
+
+javascript
+Copy code
+// Function Declaration
+function add(a, b) {
+  return a + b;
+}
+console.log("Add:", add(5, 3));
+
+// Function Expression
+const subtract = function(a, b) {
+  return a - b;
+};
+console.log("Subtract:", subtract(5, 3));
+
+// Arrow Function
+const multiply = (a, b) => a * b;
+console.log("Multiply:", multiply(5, 3));
+
+// Anonymous Function
+setTimeout(function() {
+  console.log("Anonymous function executed!");
+}, 1000);
+
+// IIFE
+(function() {
+  console.log("IIFE executed immediately!");
+})();
+
+// Higher-Order Function
+function applyOperation(a, b, operation) {
+  return operation(a, b);
+}
+const divide = (a, b) => a / b;
+console.log("Divide:", applyOperation(6, 2, divide));
+
+// Callback Function
+function fetchData(callback) {
+  setTimeout(() => {
+    console.log("Data fetched");
+    callback();
+  }, 1000);
+}
+
+function processData() {
+  console.log("Processing data...");
+}
+
+fetchData(processData);
+
+// Recursive Function
+function factorial(n) {
+  if (n === 0) {
+    return 1;
+  }
+  return n * factorial(n - 1);
+}
+console.log("Factorial of 5:", factorial(5));
