@@ -34,3 +34,45 @@ class Node {
   stack.add(2);
   stack.add(3);
   stack.prt();
+
+// Stack implementation
+// class Node{
+//   constructor(data){
+//     this.data = data;
+//     this.next = null;
+//   }
+// }
+// class Stack{
+//   constructor(){
+//     this.top = null;
+//     this.bottom = null;
+//     this.length = 0;
+//   }
+//   push(data){
+//     if (this.top == null){
+//       this.top = new Node(data);
+//       this.bottom = this.top;
+//       this.length++;
+//     } else {
+//       let temp = this.top;
+//       this.top = new Node(data);
+//       this.top.next = temp;
+//     }
+//   }
+//   prt(){
+//     let temp = this.top;
+//     while(temp != null){
+//       console.log(temp.data);
+//       temp = temp.next;
+//     }
+//   }
+//   pop(){
+//     this.top = this.top.next;
+//   }
+// }
+// let stack = new Stack();
+// stack.push(1);
+// stack.push(2);
+// stack.push(3);
+// stack.pop();
+// stack.prt();

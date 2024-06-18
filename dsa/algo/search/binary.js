@@ -12,7 +12,8 @@ function binarySearch(arr, target) {
      
       let rightHalf = arr.slice(midIndex + 1);
       let result = binarySearch(rightHalf, target);
-      return result !== -1 ? midIndex + 1 + result : -1;
+      return result !== -1 ? midIndex + 1 + result : -1; //ternary operator for if.. else
+    
     } else {
      
       let leftHalf = arr.slice(0, midIndex);

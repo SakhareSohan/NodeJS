@@ -1,0 +1,277 @@
+Arrays
+Key Operations:
+
+Creation: let arr = []; or let arr = new Array(size);
+Insertion: arr.push(value); or arr.unshift(value);
+Deletion: arr.pop(); or arr.shift();
+Access: arr[index];
+Searching: arr.indexOf(value);
+Filtering: arr.filter(callback);
+Mapping: arr.map(callback);
+Quick Exercise:
+
+Reverse an Array:
+
+javascript
+Copy code
+let arr = [1, 2, 3, 4, 5];
+let reversedArr = arr.reverse();
+console.log(reversedArr); // Output: [5, 4, 3, 2, 1]
+Find the Maximum Value in an Array:
+
+javascript
+Copy code
+let arr = [10, 5, 3, 8, 2];
+let max = Math.max(...arr);
+console.log(max); // Output: 10
+Linked Lists
+Key Operations:
+
+Creation: Define a Node class and a LinkedList class.
+Insertion: Append or insert at specific positions.
+Deletion: Remove nodes by value or position.
+Traversal: Traverse and print the linked list.
+Quick Exercise:
+
+Reverse a Linked List:
+javascript
+Copy code
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+
+  add(data) {
+    let newNode = new Node(data);
+    if (this.head === null) {
+      this.head = newNode;
+    } else {
+      let current = this.head;
+      while (current.next !== null) {
+        current = current.next;
+      }
+      current.next = newNode;
+    }
+  }
+
+  reverse() {
+    let prev = null;
+    let current = this.head;
+    while (current !== null) {
+      let next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+    this.head = prev;
+  }
+
+  print() {
+    let current = this.head;
+    while (current !== null) {
+      console.log(current.data);
+      current = current.next;
+    }
+  }
+}
+
+let list = new LinkedList();
+list.add(1);
+list.add(2);
+list.add(3);
+list.reverse();
+list.print(); // Output: 3 2 1
+Stacks (Using Linked Lists)
+Key Operations:
+
+Push: Add an element to the top.
+Pop: Remove an element from the top.
+Peek: View the top element.
+IsEmpty: Check if the stack is empty.
+Quick Exercise:
+
+Implement a Stack using Linked List:
+javascript
+Copy code
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+class Stack {
+  constructor() {
+    this.top = null;
+    this.length = 0;
+  }
+
+  push(data) {
+    const newNode = new Node(data);
+    if (this.top === null) {
+      this.top = newNode;
+    } else {
+      newNode.next = this.top;
+      this.top = newNode;
+    }
+    this.length++;
+  }
+
+  pop() {
+    if (this.top === null) {
+      return null;
+    }
+    const poppedNode = this.top;
+    this.top = this.top.next;
+    this.length--;
+    return poppedNode.data;
+  }
+
+  peek() {
+    return this.top ? this.top.data : null;
+  }
+
+  isEmpty() {
+    return this.length === 0;
+  }
+}
+
+const stack = new Stack();
+stack.push(1);
+stack.push(2);
+stack.push(3);
+console.log(stack.pop()); // Output: 3
+console.log(stack.peek()); // Output: 2
+console.log(stack.isEmpty()); // Output: false
+Binary Search Trees
+Key Operations:
+
+Insertion: Add elements to the tree.
+Deletion: Remove elements from the tree.
+Search: Find elements in the tree.
+Traversal: In-order, Pre-order, Post-order traversal.
+Quick Exercise:
+
+In-order Traversal of BST:
+javascript
+Copy code
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class BST {
+  constructor() {
+    this.root = null;
+  }
+
+  insert(data) {
+    const newNode = new Node(data);
+    if (this.root === null) {
+      this.root = newNode;
+    } else {
+      this.insertNode(this.root, newNode);
+    }
+  }
+
+  insertNode(node, newNode) {
+    if (newNode.data < node.data) {
+      if (node.left === null) {
+        node.left = newNode;
+      } else {
+        this.insertNode(node.left, newNode);
+      }
+    } else {
+      if (node.right === null) {
+        node.right = newNode;
+      } else {
+        this.insertNode(node.right, newNode);
+      }
+    }
+  }
+
+  inOrder(node) {
+    if (node !== null) {
+      this.inOrder(node.left);
+      console.log(node.data);
+      this.inOrder(node.right);
+    }
+  }
+}
+
+const bst = new BST();
+bst.insert(10);
+bst.insert(5);
+bst.insert(15);
+bst.insert(3);
+bst.insert(7);
+bst.inOrder(bst.root); // Output: 3 5 7 10 15
+Hash Maps
+Key Operations:
+
+Insertion: Insert key-value pairs.
+Deletion: Remove key-value pairs.
+Search: Retrieve value by key.
+Hash Function: Map keys to indices.
+Quick Exercise:
+
+Implementing a Simple Hash Map:
+javascript
+Copy code
+class HashMap {
+  constructor(size = 10) {
+    this.bucket = new Array(size).fill(null).map(() => []);
+    this.size = size;
+  }
+
+  hash_fun(data) {
+    let hash = 0;
+    const strData = String(data);
+    for (let i = 0; i < strData.length; i++) {
+      hash = (hash + strData.charCodeAt(i) * i) % this.size;
+    }
+    return hash;
+  }
+
+  set(key, data) {
+    let index = this.hash_fun(key);
+    this.bucket[index].push([key, data]);
+  }
+
+  get(key) {
+    let index = this.hash_fun(key);
+    for (let i = 0; i < this.bucket[index].length; i++) {
+      if (this.bucket[index][i][0] === key) {
+        return this.bucket[index][i][1];
+      }
+    }
+    return undefined;
+  }
+
+  prt() {
+    console.log(this.bucket);
+  }
+}
+
+const hash = new HashMap();
+hash.set("name", "John");
+hash.set("age", 30);
+hash.set("city", "New York");
+console.log(hash.get("name")); // Output: John
+console.log(hash.get("age")); // Output: 30
+hash.prt();
+Summary and Fun Fact
+You've covered a significant portion of DSA using JavaScript, including arrays, linked lists, stacks, binary search trees, and hash maps. This knowledge forms a strong foundation for more advanced data structures and algorithms.
+
+Fun Fact:
+Did you know that the term "debugging" originated when a real bug (a moth) was found causing problems in an early computer? Grace Hopper, a pioneering computer scientist, documented the first actual "bug" in 1947!

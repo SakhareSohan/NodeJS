@@ -1,0 +1,109 @@
+async keyword: Declares an asynchronous function that returns a promise.
+await keyword: Pauses the execution of the async function until the promise settles.
+Error handling: Use try...catch within async functions to handle errors.
+Parallel execution: Use Promise.all with await for parallel asynchronous operations.
+Sequential execution: Use await in a loop for sequential asynchronous operations.
+
+Promises: Represent the eventual completion or failure of an asynchronous operation.
+then: Attaches callbacks for fulfilled and rejected cases.
+catch: Attaches a callback for the rejected case.
+finally: Attaches a callback that runs regardless of the outcome.
+Promise.all: Waits for all promises to resolve.
+Promise.race: Resolves or rejects as soon as one promise resolves or rejects.
+Promisification: Converts callback-based functions to return promises.
+
+1. Fetching Data with Promises
+Let's look at a practical example using the Fetch API to make a network request.
+
+fetch('https://api.example.com/data')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Data:', data);
+  })
+  .catch(error => {
+    console.error('Fetch error:', error);
+  })
+  .finally(() => {
+    console.log('Fetch operation completed.');
+  });
+
+
+2. Chaining Promises
+You can chain multiple then calls to handle sequences of asynchronous operations.
+
+const promise1 = new Promise((resolve) => {
+  setTimeout(() => resolve(1), 1000);
+});
+
+promise1
+  .then(result => {
+    console.log(result); // 1
+    return result * 2;
+  })
+  .then(result => {
+    console.log(result); // 2
+    return result * 3;
+  })
+  .then(result => {
+    console.log(result); // 6
+  });
+
+
+3. Handling Multiple Promises
+Promise.all
+Promise.all waits for all promises to resolve and returns a single promise with an array of results. If any promise rejects, it immediately rejects.
+
+const promise1 = Promise.resolve(1);
+const promise2 = Promise.resolve(2);
+const promise3 = Promise.resolve(3);
+
+Promise.all([promise1, promise2, promise3])
+  .then(results => {
+    console.log(results); // [1, 2, 3]
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
+
+4. Promise.race
+Promise.race returns a promise that resolves or rejects as soon as one of the promises in the array resolves or rejects.
+
+const promise1 = new Promise((resolve) => setTimeout(resolve, 500, 'one'));
+const promise2 = new Promise((resolve) => setTimeout(resolve, 100, 'two'));
+
+Promise.race([promise1, promise2])
+  .then(result => {
+    console.log(result); // "two"
+  });
+
+  
+5. Promisifying Callback-Based Functions
+Many older APIs use callbacks. You can convert these to promises using a technique called "promisification".
+
+const fs = require('fs');
+
+function readFileAsync(path) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(path, 'utf8', (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
+  });
+}
+
+readFileAsync('example.txt')
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.error(error);
+  });

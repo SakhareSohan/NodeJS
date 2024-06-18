@@ -1,0 +1,82 @@
+1. map()
+Purpose: Transforms each element in an array and returns a new array.
+Returns: A new array of the same length, with each element transformed.
+Use Case: When you want to modify every element in an array.
+javascript
+
+const numbers = [1, 2, 3];
+const doubled = numbers.map(n => n * 2);
+console.log(doubled); // [2, 4, 6]
+
+2. filter()
+Purpose: Filters elements in an array based on a condition.
+Returns: A new array containing only the elements that meet the condition.
+Use Case: When you want to exclude certain elements from an array.
+javascript
+
+const numbers = [1, 2, 3, 4];
+const even = numbers.filter(n => n % 2 === 0);
+console.log(even); // [2, 4]
+
+3. reduce()
+Purpose: Reduces an array to a single value by executing a reducer function on each element.
+Returns: A single value (accumulated result).
+Use Case: When you want to aggregate array elements into a single result, like summing values.
+javascript
+
+const numbers = [1, 2, 3, 4];
+const sum = numbers.reduce((acc, n) => acc + n, 0);
+console.log(sum); // 10
+
+4. forEach()
+Purpose: Executes a provided function once for each array element.
+Returns: undefined.
+Use Case: When you want to perform side effects with each element, like logging.
+javascript
+
+const numbers = [1, 2, 3];
+numbers.forEach(n => console.log(n));
+// Output:
+// 1
+// 2
+// 3 
+
+5. find()
+Purpose: Finds the first element that satisfies a condition.
+Returns: The first element that satisfies the condition, or undefined if no elements satisfy it.
+Use Case: When you need just the first match from an array.
+javascript
+
+const numbers = [1, 2, 3, 4];
+const found = numbers.find(n => n > 2);
+console.log(found); // 3 
+
+6. some()
+Purpose: Checks if at least one element in the array satisfies a condition.
+Returns: true if at least one element satisfies the condition, otherwise false.
+Use Case: When you want to check if any elements meet a certain criterion.
+javascript
+
+const numbers = [1, 2, 3];
+const hasEven = numbers.some(n => n % 2 === 0);
+console.log(hasEven); // true
+ 
+7. every()
+Purpose: Checks if all elements in the array satisfy a condition.
+Returns: true if all elements satisfy the condition, otherwise false.
+Use Case: When you want to verify that every element meets a certain criterion.
+javascript
+
+const numbers = [2, 4, 6];
+const allEven = numbers.every(n => n % 2 === 0);
+console.log(allEven); // true
+
+
+Summary
+map(): Transforms each element and returns a new array.
+filter(): Returns a new array with elements that satisfy a condition.
+reduce(): Reduces the array to a single value.
+forEach(): Executes a function on each element (no return).
+find(): Returns the first element that satisfies a condition.
+some(): Checks if any elements satisfy a condition. 
+every(): Checks if all elements satisfy a condition.
