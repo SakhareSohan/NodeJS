@@ -16,7 +16,7 @@ class HashMap{
       this.bucket[index].push([key, data]);
     }
     prt(){
-      console.log(this.bucket);
+      console.log(this.bucket.flat(Infinity));
     }
   }
   const hash = new HashMap();

@@ -39,7 +39,7 @@ https://javascript.info/
 > array.sort() // alphabetic sorting
 > array.sort((a, b) => {return a-b})
 > array.map(function) // create a new array
-> array.forEach(function) // access each element element => console.log(element)
+> array.forEach(function) // access each element element => console.log(element) (elemsn, index, array)
 > array.filter(function(currentValue, index, arr), thisValue) // creates a new array
 > array.reduce(function(total, currentValue, currentIndex, arr), initialValue) // returns 1 value 
 
