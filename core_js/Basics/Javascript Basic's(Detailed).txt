@@ -1,0 +1,118 @@
+Javascript Basic's(Detailed):
+1. Compiled and Interpreted Languages
+1.1. Compiled Languages:
+Compilation Phase: During compilation, the compiler allocates memory for variables, constants, and other program elements based on their type and scope.
+Static Allocation: Memory allocation is often static and determined before runtime. This means memory locations are assigned to variables and other data structures at compile time.
+Optimization: Compilers may optimize memory usage, reorder variables, and apply other optimizations to improve runtime performance.
+
+1.2. Interpreted Languages:
+Runtime Allocation: In interpreted languages, memory allocation typically occurs dynamically at runtime.
+Execution Phase: As the interpreter executes the code line by line, it allocates memory for variables and data structures when they are encountered during execution.
+Dynamic Nature: Memory allocation in interpreted languages is more flexible and can change during program execution as variables are created, modified, and destroyed.
+
+Key Points:
+> Compiled Languages: Memory allocation is generally determined statically during compilation, optimizing performance but potentially limiting flexibility.
+> Interpreted Languages: Memory allocation is dynamic and occurs during runtime, providing flexibility but potentially leading to overhead from frequent allocation and deallocation.
+
+2. Basic overview of how JavaScript works:
+> Parsing: The browser's JavaScript engine parses the JavaScript code to understand its structure and syntax.
+> Execution: The parsed JavaScript code is executed line by line. Variables are declared, functions are defined, and statements are executed in sequence.
+> Event-Driven: JavaScript is event-driven, meaning it responds to events triggered by user actions (like clicks, scrolls, etc.) or by the browser (like page load).
+> Asynchronous Operations: JavaScript supports asynchronous operations, allowing certain tasks (like fetching data from a server) to be handled without blocking other code execution.
+> DOM Manipulation: JavaScript interacts with the Document Object Model (DOM) to dynamically update the content and style of web pages based on user interactions or other events.
+> Interpreted: JavaScript is typically interpreted at runtime rather than compiled beforehand, which means changes to the code can be seen immediately upon refresh.
+
+3. Data Types:
+3.1. Primitive
+> Stored Directly: Primitive data types (like numbers, strings, booleans, null, undefined, symbols, and bigint) are stored directly in the variable's location in memory.
+> Immutable: They are immutable, meaning their values cannot be changed once they are created. Any operation that appears to modify a primitive value actually creates a new value.
+> Pass by Value: When passed as arguments to functions or assigned to other variables, primitives are passed by value. This means a copy of the value is passed or assigned, and changes to the copy do not affect the original.
+Types:
+Number: Represents both integer and floating-point numbers.
+String: Represents sequences of characters enclosed within single or double quotes.
+Boolean: Represents a logical entity, true or false.
+Undefined: Represents a variable that has been declared but not assigned a value.
+Null: Represents the intentional absence of any object value.
+Symbol: Represents a unique identifier that's used as an object key.
+BigInt: Represents whole numbers larger than Number can represent (added in ES2020).
+
+3.2. Non-Primitive
+> Reference to Memory: Non-primitive data types (like objects and arrays) are stored as references to their location in memory.
+> Mutable: They are mutable, meaning their properties or elements can be changed after they are created.
+> Pass by Reference: When passed as arguments to functions or assigned to other variables, non-primitive data types are passed by reference. This means the reference (or address) of the object is passed or assigned, allowing modifications to affect the original object.
+Types:
+Object: The base object type from which all other objects inherit methods and properties.
+Function: Used to define functions.
+Array: Used to store multiple values in a single variable.
+Date: Used to work with dates and times.
+Math: Provides mathematical constants and functions.
+RegExp: Represents a regular expression object for pattern matching.
+Error: Represents an error object that captures runtime errors.
+Promises: Promises are objects used to handle asynchronous operations.
+
+4. Scopes
+Scopes are the boundaries of codes, data and types.
+> Lexical Scope(Static Scope) results closure.
+Lexical scope (also known as static scope) means that the scope of a variable is determined by its position within the source code (lexically) and how the functions and blocks nest in the code.
+eg.
+function abc{
+	let a = 10;
+	function xyz{
+		console.log(a);
+}
+}
+Types:
+> Global Scope
+Description: Variables declared outside of any function or block have global scope. They are accessible throughout the entire JavaScript program, including inside functions.
+. Global variables can be accessed and modified from any part of the code, making them susceptible to unintended modifications.
+. Polluting the global scope with too many variables can lead to naming conflicts and harder debugging.
+> Function Scope
+Description: Variables declared inside a function using var, let, or const are limited to the function's scope and are not accessible outside of it.
+. Each function creates its own scope, so variables with the same name can exist independently in different functions without conflict.
+. Functions can access variables defined in their outer (parent) scope, known as lexical scope.
+> Block Scope (Introduced in ES6)
+Description: Variables declared with let and const are block-scoped, meaning they are only accessible within the nearest curly braces { }, including loops (for, while, do...while) and conditional statements (if, else, switch).
+. Block-scoped variables are not hoisted to the top of their block, unlike variables declared with var.
+. Using let and const encourages better variable scoping practices and reduces accidental global scope pollution.
+> Module Scope (Introduced in ES6)
+Description: Variables and functions declared in a module (file) using import or export are scoped to that module. They are not accessible from outside the module unless explicitly exported.
+. Module scope helps encapsulate code and avoids naming collisions between different modules.
+. Variables declared with const or let at the top level of a module are not added to the global object.
+
+5. Prototypes
+In JavaScript, prototypes allow you to:
+. Add Methods Dynamically: You can add methods to a class without altering the class definition directly. This is useful for extending functionality without modifying existing code.
+. Inherit Methods: Objects created from the same class share methods defined in the class's prototype. This promotes reusability and efficiency in memory usage.
+
+Key Points:
+. Prototype Chain: Each object in JavaScript has a prototype. When a property or method is accessed on an object, JavaScript first checks if the object itself has that property or method. If not, it looks up the prototype chain until it finds it or reaches the end (typically Object.prototype).
+. Modifying Prototypes: You can add methods and properties to a class's prototype using ClassName.prototype.methodName = function() { ... }. This ensures that all instances of that class inherit the new method.
+. Dynamic Extensibility: Prototypes allow for dynamic extension of classes at runtime. This is different from traditional class-based inheritance models seen in languages like Java or C++, where inheritance is static and defined at compile-time. 
+
+6. Explicit Return vs Implicit Return
+In JavaScript arrow functions, if you use the concise body syntax (i.e., without curly braces {}), the result of the expression is implicitly returned. This is what happens in the num => num * 2 example.
+However, if you use a block body syntax (i.e., with curly braces {}), you must use the return keyword explicitly.
+
+7. 'this' Keyword
+7.1 JavaScript Classes
+1. Accessing Properties:
+. Inside a class method or constructor, this refers to the current instance of the class. This allows you to access and modify properties of the object that the method is being called on.
+2. Assigning Objects to Properties:
+You can assign objects to properties of a class just like you assign primitive values. The key is to ensure that the object initialization occurs properly within the constructor or methods.
+7.2 JavaScript Functions
+1. Contextual Use in Functions
+In JavaScript, this is a special keyword that refers to the object it belongs to. Its value is determined by how a function is called (runtime context) and varies depending on whether the function is a regular function or an arrow function.
+2. Importance of this in Function Context
+. Dynamic Binding: this enables dynamic binding, where the exact object that a method is invoked on is determined at runtime. This flexibility is crucial in object-oriented programming when working with different instances of objects.
+. Avoiding Global Scope Issues: By using this, you avoid polluting the global scope with variables that could potentially conflict with other parts of your code.
+
+> When to Use 'this'
+. Use this when you want to assign properties to the current instance of an object or class.
+. It's particularly useful in constructors or methods of classes, where you're defining behavior or state specific to instances of that class.
+
+
+Array destructing is assigning values to variables from array.
+let [variable1, variable2, ..., variableN] = array;
+let variable = arr[index] // assigning and not destructuring
+
+

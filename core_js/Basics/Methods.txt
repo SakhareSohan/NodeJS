@@ -52,3 +52,6 @@ https://javascript.info/
 
 #point
 > (a, b) a = value and b = index
+> isNaN // verifies if the value is NAN
+> typeof // verifies that the value is of which Datatypes
+> Number(i) // will use number value from Datatypesx 
