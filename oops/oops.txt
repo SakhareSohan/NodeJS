@@ -1,0 +1,8 @@
+> Static Methods
+Belongs to Class: Static methods are associated with the class itself, not with instances of the class. They are useful for defining utility functions or operations that do not depend on specific instance data.
+
+Direct Invocation: They are called directly on the class, not on instances. This makes them accessible without needing to create an object first.
+
+No this Context: Static methods do not have access to the this keyword. They cannot access or modify instance-specific data because they are not tied to any particular instance.
+
+Inheritance: Subclasses inherit static methods from their parent classes. They can also override static methods with their own implementations.
