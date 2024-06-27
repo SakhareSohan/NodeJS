@@ -6,3 +6,12 @@ Direct Invocation: They are called directly on the class, not on instances. This
 No this Context: Static methods do not have access to the this keyword. They cannot access or modify instance-specific data because they are not tied to any particular instance.
 
 Inheritance: Subclasses inherit static methods from their parent classes. They can also override static methods with their own implementations.
+
+> Polymorphism
+Polymorphism is one of the core principles of Object-Oriented Programming (OOP). It refers to the ability of different objects to respond to the same method call in different ways. In JavaScript, polymorphism is primarily achieved through method overriding and, to some extent, through method overloading (though JavaScript doesn't support method overloading natively as some other languages do).
+
+Method Overriding
+Method overriding occurs when a subclass provides a specific implementation of a method that is already defined in its superclass. The overridden method in the subclass will be called, even if the method call is made on a reference to the superclass.
+
+Method Overloading (Simulated)
+While JavaScript does not support method overloading natively (i.e., having multiple methods with the same name but different parameters), you can simulate it by checking the number and types of arguments within a single method.
