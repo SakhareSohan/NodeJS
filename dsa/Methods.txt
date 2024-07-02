@@ -1,0 +1,57 @@
+Links To Follow:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
+https://javascript.info/
+
+# String operations
+> string.length;
+> string.charAt(index); //get char at specific index 
+> string.charCodeAt(index); //utf-16 code of char
+> string.at(index); //char at index or string[2]; // no negative numbers
+> string.slice(start, end); // -ve for slicing opposite
+> string.substr(start, length);
+> string.toUpperCase() , string.toLowerCase() // convert casing
+> string.concat(' ', string2); or + //concat operator for strings
+> string.trim() // whitespaces types: Start, End
+> string.padStart(count, 'pad') or string.padEnd(count, 'pad') // doesnt work pad()
+> string.replace('to', 'from') // replace only 1st occurance string.replaceAll('to', 'from')
+> string.repeat()
+> string.split('  , |') // used to store in array as elements
+> string.indexOf('str') or string.lastIndexOf('str') // searches string for str and string.search('str') or string.match('str')// use for RE
+
+
+# Array operations
+> array.findIndex();
+> array.length;
+> array.toString()
+> array.at('index') or array['index']
+> array.join('*') // joins all elements using * 
+> array.pop() // last element
+> array.push('item')
+> array.shift() // left element pop and shift to left 
+> array.unshift('element') // add element to 1st index and shift to right
+> delete array[index] // creates holes
+> array.copyWithin(number, start)
+> array.splice(index, number, elements) // can be used to remove/update/add ### 0 to add and 1 to remove
+> array.slice(start, end)
+> array.toSpliced() // same but creates a new array
+> array.flat() // new array with flat dimensions
+> array.findLast(x => x > 40);
+> array.sort() // alphabetic sorting
+> array.sort((a, b) => {return a-b})
+> array.map(function) // create a new array
+> array.forEach(function) // access each element element => console.log(element) (elemsn, index, array)
+> array.filter(function(currentValue, index, arr), thisValue) // creates a new array
+> array.reduce(function(total, currentValue, currentIndex, arr), initialValue) // returns 1 value 
+
+# map (dict, m-dimention array)
+> new Map([[key,value]])
+> set(key, value)
+> get(key) //returns value
+
+> Object.entries(object) // access objects
+
+#point
+> (a, b) a = value and b = index
+> isNaN // verifies if the value is NAN
+> typeof // verifies that the value is of which Datatypes
+> Number(i) // will use number value from Datatypesx 
