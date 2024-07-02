@@ -1,0 +1,65 @@
+Beginner
+Introduction to JavaScript
+
+Syntax and basic constructs (variables, data types, operators)
+Functions and scope
+Control structures (if-else, loops)
+Basics of OOP
+
+What is OOP?
+Core principles of OOP: Encapsulation, Abstraction, Inheritance, Polymorphism
+Understanding objects and classes
+Objects and Classes in JavaScript
+
+Creating objects using object literals
+Understanding the this keyword
+Defining classes using ES6 class syntax
+Constructor functions
+Adding methods to classes
+Encapsulation
+
+Private and public properties
+Getters and setters
+Using closures for encapsulation
+Intermediate
+Inheritance
+
+Prototypal inheritance in JavaScript
+The extends keyword
+Superclass and subclass
+Method overriding
+Polymorphism
+
+Method overloading (not natively supported in JavaScript, but can be simulated)
+Method overriding
+Using polymorphism in practice
+Abstraction
+
+Abstract classes and methods (JavaScript doesn’t support abstract classes natively, but can be simulated)
+Interfaces and duck typing in JavaScript
+Advanced OOP Concepts
+
+Static methods and properties
+Singleton pattern
+Factory pattern
+Observer pattern
+Advanced
+Advanced Inheritance and Prototypes
+
+Prototype chain
+Understanding the __proto__ and prototype properties
+Creating complex inheritance hierarchies
+Mixins
+
+Creating mixins to share behavior among classes
+Using the Object.assign() method
+Modules and Namespaces
+
+ES6 modules
+Import and export statements
+Namespacing to avoid naming conflicts
+Design Patterns
+
+Creational patterns (Singleton, Factory)
+Structural patterns (Decorator, Adapter)
+Behavioral patterns (Observer, Strategy)

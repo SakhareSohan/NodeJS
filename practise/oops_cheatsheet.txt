@@ -1,0 +1,150 @@
+1. Encapsulation
+Encapsulation is the practice of bundling data (variables) and methods (functions) that operate on the data into a single unit or class. It also involves restricting access to certain components to protect the internal state of the object.
+
+In JavaScript, encapsulation can be achieved using classes and closures.
+
+Example using classes:
+
+class Person {
+    constructor(name, age) {
+        this.name = name; // public property
+        this._age = age;  // conventionally treated as private
+    }
+
+    // Getter for age
+    get age() {
+        return this._age;
+    }
+
+    // Setter for age
+    set age(newAge) {
+        if(newAge > 0) {
+            this._age = newAge;
+        } else {
+            console.log('Age must be positive');
+        }
+    }
+
+    // Method to display details
+    display() {
+        console.log(`Name: ${this.name}, Age: ${this._age}`);
+    }
+}
+
+const person = new Person('Sohan', 22);
+person.display(); // Output: Name: Sohan, Age: 22
+person.age = 23;
+console.log(person.age); // Output: 23
+
+Example using closures:
+
+function createPerson(name, age) {
+    let _age = age;
+
+    return {
+        get name() {
+            return name;
+        },
+        get age() {
+            return _age;
+        },
+        set age(newAge) {
+            if(newAge > 0) {
+                _age = newAge;
+            } else {
+                console.log('Age must be positive');
+            }
+        },
+        display() {
+            console.log(`Name: ${name}, Age: ${_age}`);
+        }
+    };
+}
+
+const person = createPerson('Sohan', 22);
+person.display(); // Output: Name: Sohan, Age: 22
+person.age = 23;
+console.log(person.age); // Output: 23
+
+2. Abstraction
+Abstraction involves hiding complex implementation details and exposing only the necessary parts. This is achieved by providing a simple interface to interact with the object.
+
+In JavaScript, abstraction can be implemented using classes with public methods to interact with private properties.
+
+Example:
+
+class Car {
+    constructor(brand, model) {
+        this.brand = brand;
+        this.model = model;
+        this._speed = 0; // private property
+    }
+
+    // Public method to accelerate
+    accelerate() {
+        this._speed += 10;
+        console.log(`The car is now going at ${this._speed} km/h`);
+    }
+
+    // Public method to brake
+    brake() {
+        this._speed -= 10;
+        console.log(`The car is now going at ${this._speed} km/h`);
+    }
+}
+
+const myCar = new Car('Toyota', 'Corolla');
+myCar.accelerate(); // Output: The car is now going at 10 km/h
+myCar.brake();      // Output: The car is now going at 0 km/h
+
+3. Inheritance
+Inheritance allows a class to inherit properties and methods from another class. This helps in code reusability and establishes a hierarchical relationship between classes.
+
+In JavaScript, inheritance is achieved using the extends keyword.
+
+Example:
+
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+
+    speak() {
+        console.log(`${this.name} makes a sound.`);
+    }
+}
+
+class Dog extends Animal {
+    constructor(name, breed) {
+        super(name); // call the parent class constructor
+        this.breed = breed;
+    }
+
+    speak() {
+        console.log(`${this.name} barks.`);
+    }
+}
+
+const dog = new Dog('Rex', 'Labrador');
+dog.speak(); // Output: Rex barks.
+
+4. Polymorphism
+Polymorphism allows methods to do different things based on the object it is acting upon. In JavaScript, polymorphism can be achieved through method overriding and interface-like structures.
+
+Method Overriding Example:
+
+class Shape {
+    draw() {
+        console.log('Drawing a shape');
+    }
+}
+
+class Circle extends Shape {
+    draw() {
+        console.log('Drawing a circle');
+    }
+}
+
+class Square extends Shape {
+    draw()
+}
