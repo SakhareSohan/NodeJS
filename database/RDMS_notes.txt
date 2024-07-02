@@ -1,0 +1,361 @@
+1. Introduction to Relational Databases
+Definition and History
+Key Concepts: Tables, Rows, Columns, and Relationships
+Popular Relational Database Management Systems (RDBMS): MySQL, PostgreSQL, SQLite, etc.
+2. Database Design
+Data Modeling: Entities, Attributes, and Relationships
+Normalization: Normal Forms (1NF, 2NF, 3NF, BCNF)
+Entity-Relationship (ER) Diagrams
+3. SQL Basics
+Introduction to SQL
+Basic Queries: SELECT, INSERT, UPDATE, DELETE
+Filtering Data: WHERE, AND, OR, IN, BETWEEN, LIKE
+Sorting and Limiting Data: ORDER BY, LIMIT
+4. Advanced SQL
+Joins: INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL JOIN, CROSS JOIN
+Subqueries and Nested Queries
+Aggregate Functions: COUNT, SUM, AVG, MIN, MAX
+Grouping Data: GROUP BY, HAVING
+Set Operations: UNION, INTERSECT, EXCEPT
+5. Database Transactions
+ACID Properties: Atomicity, Consistency, Isolation, Durability
+Transaction Control: BEGIN, COMMIT, ROLLBACK
+Isolation Levels: Read Uncommitted, Read Committed, Repeatable Read, Serializable
+6. Database Indexing
+Introduction to Indexes
+Types of Indexes: B-Tree, Hash, Bitmap
+Creating and Using Indexes
+Performance Considerations
+7. Advanced Database Design
+Denormalization
+Database Partitioning
+Stored Procedures, Functions, and Triggers
+Views
+8. Database Security
+User Management
+Roles and Permissions
+Data Encryption
+9. Backup and Recovery
+Backup Strategies
+Restoring Databases
+Point-in-Time Recovery
+10. Performance Tuning and Optimization
+Query Optimization
+Understanding Execution Plans
+Index Tuning
+Caching Strategies
+11. Advanced Topics
+NoSQL Databases vs. Relational Databases
+Sharding and Replication
+Distributed Databases
+Big Data Integration
+12. Practical Applications and Projects
+Building a Small Application with a Database Backend
+Case Studies and Real-World Scenarios
+Industry Best Practices
+We'll start with the basics and progressively move towards more advanced topics. Let's begin with the first section: Introduction to Relational Databases.
+
+Key Terminologies in Relational Databases
+1. Database
+A database is a structured collection of data, typically organized to model aspects of reality in a way that supports processes requiring information. In relational databases, data is organized into tables.
+
+2. Schema
+A schema is the overall structure of the database. It defines how data is organized and how the relationships among data are associated. Schemas include definitions of tables, columns, data types, and the relationships between the tables.
+
+3. Table
+A table is a collection of related data entries and it consists of columns and rows. Each table represents an entity, such as customers, orders, or products.
+
+4. Column
+A column, also known as a field or attribute, is a set of data values of a particular type, one for each row of the table. Columns describe the properties or characteristics of the table.
+
+5. Row
+A row, also known as a record or tuple, represents a single data item in a table. Each row consists of values for each column in the table.
+
+6. Primary Key
+A primary key is a column, or a set of columns, that uniquely identifies each row in a table. Each table should have a primary key to ensure that each record can be uniquely identified.
+
+7. Foreign Key
+A foreign key is a column, or a set of columns, in one table that references the primary key columns in another table. Foreign keys create relationships between tables.
+
+8. Index
+An index is a database object that improves the speed of data retrieval operations on a table at the cost of additional storage space and slower write operations. Indexes are used to quickly locate data without having to search every row in a table.
+
+9. View
+A view is a virtual table based on the result-set of a SQL query. Views can combine data from multiple tables and present it as a single table. They do not store data themselves but provide a way to look at data in different ways.
+
+10. Transaction
+A transaction is a sequence of one or more SQL operations that are executed as a single unit of work. Transactions are used to ensure data integrity and consistency.
+
+11. Normalization
+Normalization is the process of organizing the columns (attributes) and tables (relations) of a database to minimize data redundancy. It involves dividing large tables into smaller, related tables and defining relationships between them.
+
+12. Denormalization
+Denormalization is the process of combining tables to improve database read performance. It is the opposite of normalization and can be used in scenarios where query performance is more critical than data redundancy.
+
+How These Concepts Are Linked
+Database and Schema
+
+A database contains one or more schemas. Each schema defines the structure of the tables, relationships, indexes, views, and other database objects.
+Schema and Tables
+
+A schema defines how tables are structured within the database, including columns, data types, and constraints (like primary keys and foreign keys).
+Tables, Columns, and Rows
+
+Tables are composed of columns and rows. Columns define the type of data stored, and rows contain the actual data records.
+Primary Keys and Foreign Keys
+
+Primary keys uniquely identify each row within a table. Foreign keys establish relationships between tables, linking a row in one table to a row in another table.
+Indexes
+
+Indexes are created on tables to speed up data retrieval. They are not directly linked to the schema but are important for performance optimization.
+Views
+
+Views are virtual tables created from the result of a query. They provide a way to present data in different formats without altering the actual tables.
+Transactions
+
+Transactions ensure that a sequence of operations is completed successfully and maintain data integrity within the database.
+Normalization and Denormalization
+
+Normalization organizes data to reduce redundancy, while denormalization combines tables to optimize read performance. Both are techniques used in schema design based on specific requirements.
+
+2. Database Design
+2.1 Data Modeling
+Data modeling is the process of creating a visual representation of a complex data structure. It helps in organizing data logically and establishing relationships between different data elements. The most common approach for data modeling in relational databases is the use of Entity-Relationship (ER) Diagrams.
+
+2.2 Entities and Attributes
+Entities: These are objects or things in the real world that are distinguishable from other objects. For example, a "Customer" or an "Order" can be considered entities.
+Attributes: These are properties or details about the entities. For example, a Customer entity might have attributes such as CustomerID, Name, Email, and PhoneNumber.
+2.3 Relationships
+One-to-One (1:1): Each entity in the relationship will have exactly one related entity. For example, each person has one unique passport.
+One-to-Many (1
+): A single entity in one table is related to multiple entities in another table. For example, a customer can place multiple orders.
+Many-to-Many (M
+): Multiple entities in one table are related to multiple entities in another table. For example, students and courses, where a student can enroll in multiple courses and a course can have multiple students.
+2.4 Normalization
+Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity. There are several normal forms (NFs) that a database can adhere to:
+
+First Normal Form (1NF): Ensures that the table has a primary key and that each column contains atomic (indivisible) values.
+Second Normal Form (2NF): Meets all the requirements of the 1NF and ensures that all non-key attributes are fully functional dependent on the primary key.
+Third Normal Form (3NF): Meets all the requirements of the 2NF and ensures that there are no transitive dependencies (non-key attributes depending on other non-key attributes).
+Boyce-Codd Normal Form (BCNF): A stronger version of the 3NF where every determinant is a candidate key.
+2.5 Entity-Relationship (ER) Diagrams
+ER diagrams are used to visually represent the data model. They typically include:
+
+Entities: Represented by rectangles.
+Attributes: Represented by ovals connected to their respective entities.
+Relationships: Represented by diamonds connecting entities.
+Primary Keys: Underlined attributes.
+Foreign Keys: Dashed lines or arrows indicating relationships between entities.
+Steps to Create an ER Diagram
+Identify Entities: Determine the major entities in your system.
+Identify Relationships: Define how entities are related to each other.
+Identify Attributes: Determine the attributes for each entity.
+Map Keys: Decide on the primary key for each entity and identify any foreign keys.
+Example ER Diagram
+Let's consider a simple example of a database for an online store. We will have the following entities: Customer, Order, Product.
+
+Entities and Attributes:
+Customer: CustomerID (PK), Name, Email, PhoneNumber
+Order: OrderID (PK), OrderDate, CustomerID (FK)
+Product: ProductID (PK), ProductName, Price
+Relationships:
+Customer to Order: One-to-Many (1
+) – A customer can have multiple orders.
+Order to Product: Many-to-Many (M
+) – An order can contain multiple products, and a product can be in multiple orders. This relationship often requires a junction table (OrderProduct) to handle the many-to-many relationship.
+
+
+2.6 Normalization
+Normalization is a systematic approach of decomposing tables to eliminate data redundancy and undesirable characteristics like insertion, update, and deletion anomalies. It involves organizing the columns (attributes) and tables (relations) of a database to ensure that their dependencies are properly enforced by database integrity constraints.
+
+Objectives of Normalization
+Eliminate redundant data: Storing the same data in more than one table.
+Ensure data dependencies make sense: Only store related data in a table.
+Normal Forms
+There are several normal forms (NFs) to which a database schema can be normalized. The most common normal forms are:
+
+1. First Normal Form (1NF)
+A table is in 1NF if it only contains atomic (indivisible) values; each column contains unique values and each row is unique.
+Ensures that each column contains only one value and each row is unique.
+Example:
+Before 1NF:
+
+diff
+Copy code
+OrderID | CustomerName | Items
+--------|--------------|----------------
+1       | John Doe     | Pen, Pencil
+2       | Jane Smith   | Notebook
+After 1NF:
+
+mathematica
+Copy code
+OrderID | CustomerName | Item
+--------|--------------|------
+1       | John Doe     | Pen
+1       | John Doe     | Pencil
+2       | Jane Smith   | Notebook
+2. Second Normal Form (2NF)
+A table is in 2NF if it is in 1NF and all non-key attributes are fully functional dependent on the primary key.
+Ensures that each attribute is fully dependent on the primary key.
+Example:
+Before 2NF:
+
+mathematica
+Copy code
+OrderID | CustomerName | CustomerAddress | Item
+--------|--------------|-----------------|------
+1       | John Doe     | 123 Elm St      | Pen
+1       | John Doe     | 123 Elm St      | Pencil
+2       | Jane Smith   | 456 Oak St      | Notebook
+After 2NF:
+
+sql
+Copy code
+Orders Table:
+OrderID | CustomerID
+--------|-----------
+1       | 1
+2       | 2
+
+Customers Table:
+CustomerID | CustomerName | CustomerAddress
+-----------|--------------|-----------------
+1          | John Doe     | 123 Elm St
+2          | Jane Smith   | 456 Oak St
+
+OrderItems Table:
+OrderID | Item
+--------|------
+1       | Pen
+1       | Pencil
+2       | Notebook
+3. Third Normal Form (3NF)
+A table is in 3NF if it is in 2NF and all the attributes are only dependent on the primary key (i.e., no transitive dependency).
+Ensures that there are no transitive dependencies.
+Example:
+Before 3NF:
+
+diff
+Copy code
+OrderID | CustomerID | CustomerName | CustomerAddress
+--------|------------|--------------|-----------------
+1       | 1          | John Doe     | 123 Elm St
+2       | 2          | Jane Smith   | 456 Oak St
+After 3NF:
+
+sql
+Copy code
+Orders Table:
+OrderID | CustomerID
+--------|-----------
+1       | 1
+2       | 2
+
+Customers Table:
+CustomerID | CustomerName | CustomerAddress
+-----------|--------------|-----------------
+1          | John Doe     | 123 Elm St
+2          | Jane Smith   | 456 Oak St
+Boyce-Codd Normal Form (BCNF)
+A table is in BCNF if it is in 3NF and every determinant is a candidate key. This form addresses certain anomalies not handled by 3NF.
+Advantages of Normalization
+Reduces data redundancy: Ensures that the same data is not stored in multiple places.
+Improves data integrity: Ensures that data modifications (insert, update, delete) are performed consistently.
+Optimizes queries: Helps in efficient querying and indexing.
+Example: Normalization Process
+Let's normalize a sample table step-by-step to understand the process.
+
+Initial Table
+mathematica
+Copy code
+OrderID | CustomerName | CustomerAddress | Item | ItemPrice
+--------|--------------|-----------------|------|----------
+1       | John Doe     | 123 Elm St      | Pen  | 1.20
+1       | John Doe     | 123 Elm St      | Pencil | 0.80
+2       | Jane Smith   | 456 Oak St      | Notebook | 2.50
+Step 1: Convert to 1NF
+mathematica
+Copy code
+OrderID | CustomerName | CustomerAddress | Item | ItemPrice
+--------|--------------|-----------------|------|----------
+1       | John Doe     | 123 Elm St      | Pen  | 1.20
+1       | John Doe     | 123 Elm St      | Pencil | 0.80
+2       | Jane Smith   | 456 Oak St      | Notebook | 2.50
+Step 2: Convert to 2NF
+sql
+Copy code
+Orders Table:
+OrderID | CustomerID
+--------|-----------
+1       | 1
+2       | 2
+
+Customers Table:
+CustomerID | CustomerName | CustomerAddress
+-----------|--------------|-----------------
+1          | John Doe     | 123 Elm St
+2          | Jane Smith   | 456 Oak St
+
+OrderItems Table:
+OrderID | Item     | ItemPrice
+--------|----------|----------
+1       | Pen      | 1.20
+1       | Pencil   | 0.80
+2       | Notebook | 2.50
+Step 3: Convert to 3NF
+sql
+Copy code
+Orders Table:
+OrderID | CustomerID
+--------|-----------
+1       | 1
+2       | 2
+
+Customers Table:
+CustomerID | CustomerName | CustomerAddress
+-----------|--------------|-----------------
+1          | John Doe     | 123 Elm St
+2          | Jane Smith   | 456 Oak St
+
+OrderItems Table:
+OrderID | ItemID
+--------|-------
+1       | 1
+1       | 2
+2       | 3
+
+Items Table:
+ItemID | Item     | ItemPrice
+-------|----------|----------
+1      | Pen      | 1.20
+2      | Pencil   | 0.80
+3      | Notebook | 2.50
+By following the normalization process, we ensure that our database is well-structured, reducing redundancy and improving data integrity.
+
+/////////////////////////////////////////
+////////////////////////////////////////
+///////////////////////////////////////
+3. SQL Basics
+3.1 SQL Syntax
+SQL syntax is the set of rules that define how SQL statements are written. The basic SQL commands are divided into several categories:
+
+DDL (Data Definition Language): Commands that define the structure of the database.
+
+CREATE: Create new tables or databases.
+ALTER: Modify existing database structures.
+DROP: Delete tables or databases.
+DML (Data Manipulation Language): Commands that manipulate the data stored in the database.
+
+SELECT: Retrieve data from the database.
+INSERT: Insert new data into the database.
+UPDATE: Update existing data within the database.
+DELETE: Delete data from the database.
+DCL (Data Control Language): Commands that control access to the data.
+
+GRANT: Give user's access privileges to the database.
+REVOKE: Take back user's access privileges.
+TCL (Transaction Control Language): Commands that manage transactions in the database.
+
+COMMIT: Save the changes.
+ROLLBACK: Revert changes since the last commit.
