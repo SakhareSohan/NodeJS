@@ -29,7 +29,7 @@ Key Points:
 > Pass by Value: When passed as arguments to functions or assigned to other variables, primitives are passed by value. This means a copy of the value is passed or assigned, and changes to the copy do not affect the original.
 Types:
 Number: Represents both integer and floating-point numbers.
-String: Represents sequences of characters enclosed within single or double quotes.
+String: Represents sequences of characters enclosed within single or double quotes. ***They are immutable
 Boolean: Represents a logical entity, true or false.
 Undefined: Represents a variable that has been declared but not assigned a value.
 Null: Represents the intentional absence of any object value.

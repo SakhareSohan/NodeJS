@@ -1,0 +1,96 @@
+1. Primitive Data Types
+> number: Represents all numbers (integers, floats, etc.)
+let age: number = 25;
+> string: Represents text data. (immutable)
+let str: string = '' // an empty string, best practise.
+let str: string = new String('') // an empty object of string. it is an object and not primitive data
+let name: string = "Sohan";
+> boolean: Represents true/false values.
+let isStudent: boolean = true;
+> void: Represents the absence of any type, usually used as the return type of functions that do not return a value.
+function logMessage(message: string): void {
+    console.log(message);
+}
+> null: Represents an intentional absence of value.
+let empty: null = null;
+> undefined: Represents an uninitialized variable.
+let notAssigned: undefined = undefined;
+
+2. Special Data Types
+> any: Represents any type, opting out of type checking.
+let randomValue: any = 10;
+randomValue = "hello";
+randomValue = true;
+> unknown: Similar to any, but safer because it requires type checking before performing operations on it.
+let unknownValue: unknown = "hello";
+if (typeof unknownValue === "string") {
+    console.log(unknownValue.toUpperCase());
+}
+> never: Represents the type of values that never occur, such as functions that always throw an error or infinite loops.
+function throwError(message: string): never {
+    throw new Error(message);
+}
+
+3. Type Literals and Enums
+> Literals: Represents specific values, useful for creating exact values.
+let literalValue: "hello" = "hello";
+let specificNumber: 42 = 42;
+> enum: A way to define a set of named constants, useful for creating a collection of related values.(immutable)
+enum Direction {
+    Up = 1,
+    Down = 2,
+    Left,
+    Right
+}
+let move: Direction = Direction.Up; // 1
+
+4. Complex Types
+> Arrays: Represents a collection of values of a specific type.
+let arr: number[] = new Array(n) // if n is number then size of array else element in array.
+let arr: number[] = [] // empty array
+let numbers: number[] = [1, 2, 3, 4];
+> Tuples: Represents an array with a fixed number of elements of specified types.
+let person: [string, number] = ["Sohan", 25];
+> Objects: Represents a structure with named properties.
+let employee: { name: string; age: number } = { name: "Sohan", age: 25 };
+
+5. Function Types
+Defines the types of input parameters and return values.
+function add(a: number, b: number): number {
+    return a + b;
+}
+
+6. Union and Intersection Types
+> Union: Represents a value that can be one of several types.
+let unionType: number | string;
+unionType = 10;
+unionType = "hello";
+> Intersection: Combines multiple types into one.
+interface Person {
+    name: string;
+}
+interface Employee {
+    employeeId: number;
+}
+type EmployeePerson = Person & Employee;
+let employeePerson: EmployeePerson = { name: "Sohan", employeeId: 123 };
+
+
+7. Type Aliases and Interfaces
+> Type Alias: Creates a new name for a type.
+type ID = number | string;
+let userId: ID = 123;
+> Interface: Describes the shape of an object.
+interface User {
+    name: string;
+    age: number;
+}
+let user: User = { name: "Sohan", age: 25 };
+
+8. Generics
+Provides a way to create reusable components.
+function identity<T>(value: T): T {
+    return value;
+}
+let num = identity<number>(42);
+let str = identity<string>("Hello");

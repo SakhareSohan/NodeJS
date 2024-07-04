@@ -2,7 +2,7 @@ Links To Follow:
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
 https://javascript.info/
 
-# String operations
+# String operations (immutable)
 > string.length;
 > string.charAt(index); //get char at specific index 
 > string.charCodeAt(index); //utf-16 code of char
@@ -17,6 +17,7 @@ https://javascript.info/
 > string.repeat()
 > string.split('  , |') // used to store in array as elements
 > string.indexOf('str') or string.lastIndexOf('str') // searches string for str and string.search('str') or string.match('str')// use for RE
+> string.join('') // joins the array in string without spaces
 
 
 # Array operations
