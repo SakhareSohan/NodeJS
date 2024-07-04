@@ -1,4 +1,4 @@
-function reverseString(str: string): string {
+function reverseString1(str: string): string {
     let n: number = str.length;
     let result: string = '';
     
@@ -9,6 +9,6 @@ function reverseString(str: string): string {
     return result;
   }
   
-  let aba: string = "hello";
-  console.log(reverseString(aba));  // Output should be "olleh"
+  let abaa: string = "hello";
+  console.log(reverseString1(abaa));  // Output should be "olleh"
   
