@@ -1,0 +1,7 @@
+\? help
+\c 'database_name'- connect to database
+\l -list of all databses
+\dt -list of all database tables
+\d -discription of tables
+
+SELECT * FROM // here * is columns name and * means all columns.

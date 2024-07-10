@@ -1,0 +1,11 @@
+
+DROP database 'database_name';  //ERROR: database "Javatpoint" is being accessed by other users || Detail: There is 1 other session using the database.
+
+// solution: 
+REVOKE CONNECT ON DATABASE Javatpoint from public; 
+
+SELECT pg_terminate_backend(pg_stat_activity.pid)  
+FROM pg_stat_activity  
+WHERE pg_stat_activity.datname = 'Javatpoint';  
+
+  

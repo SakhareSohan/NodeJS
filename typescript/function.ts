@@ -13,11 +13,11 @@ function abc(): void{
   ab()
 
   // Arrow function
-  let arrow: () => void = (): void => {
+  let arrow: (a: number, b: number) => void = (a, b): void => {
     console.log('arrow');
   }
   console.log(typeof arrow);
-  arrow()
+  arrow(2, 3)
   
   // Arrow function IIFE
   let ba: string = ((): string => {
