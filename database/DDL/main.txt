@@ -1,0 +1,35 @@
+1. Data Definition Language (DDL)
+DDL commands are used to define and manage database schema. They include commands to create, modify, and drop database objects such as tables, indexes, and schemas.
+
+Common DDL Commands
+. CREATE: Creates a new table, database, index, or other objects.
+. ALTER: Modifies an existing database object.
+. DROP: Deletes a database object.
+. TRUNCATE: Removes all rows from a table without logging individual row deletions.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+> Creating a Table
+
+CREATE TABLE employees (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    department VARCHAR(50),
+    salary NUMERIC(10, 2),
+    hire_date DATE
+);
+__________________________________________________________________________________
+
+> Altering a Table
+
+ALTER TABLE employees ADD COLUMN email VARCHAR(100);
+__________________________________________________________________________________
+
+> Dropping a Table
+
+DROP TABLE employees;
+__________________________________________________________________________________
+
+> Truncating a Table
+
+TRUNCATE TABLE employees;

@@ -2,6 +2,10 @@
 \c 'database_name'- connect to database
 \l -list of all databses
 \dt -list of all database tables
-\d -discription of tables
+\d -discription of tables or schema relationships
+
 
 SELECT * FROM // here * is columns name and * means all columns.
+
+SELECT current_schema(); // current schema
+SHOW search_path; // path to schema
