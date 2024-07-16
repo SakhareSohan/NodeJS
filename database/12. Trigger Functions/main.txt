@@ -1,0 +1,39 @@
+> A trigger function is a special type of function in PostgreSQL that is automatically invoked or executed in response to certain events on a table or view. These events can be INSERT, UPDATE, DELETE, or even TRUNCATE.
+
+Why Use Trigger Functions?
+Data Validation: Ensure data integrity by validating data before it is inserted or updated.
+Automatic Updates: Automatically update or log changes to other tables.
+Enforcement of Business Rules: Enforce complex business rules that cannot be easily enforced with constraints alone.
+
+Basic Structure of a Trigger Function
+> Define the Trigger Function: The function should be written in PL/pgSQL (or another supported procedural language).
+> Create the Trigger: The trigger specifies the event that will cause the trigger function to be called.
+
+_____________________________________________________________________________________________________________________
+Trigger Functions:
+
+CREATE OR REPLACE FUNCTION monday.log_student_changes()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF TG_OP = 'UPDATE' THEN
+        INSERT INTO monday.student_audit (student_id, operation, old_name, new_name, changed_at)
+        VALUES (OLD.student_id, 'UPDATE', OLD.name, NEW.name, CURRENT_TIMESTAMP);
+    ELSIF TG_OP = 'INSERT' THEN
+        INSERT INTO monday.student_audit (student_id, operation, old_name, new_name, changed_at)
+        VALUES (NEW.student_id, 'INSERT', NULL, NEW.name, CURRENT_TIMESTAMP);
+    ELSIF TG_OP = 'DELETE' THEN
+        INSERT INTO monday.student_audit (student_id, operation, old_name, new_name, changed_at)
+        VALUES (OLD.student_id, 'DELETE', OLD.name, NULL, CURRENT_TIMESTAMP);
+    END IF;
+    RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+_______________________________________________________________________________________________________________________
+Trigger:
+
+CREATE TRIGGER student_changes
+AFTER INSERT OR UPDATE OR DELETE
+ON monday.student
+FOR EACH ROW
+EXECUTE FUNCTION monday.log_student_changes();
+________________________________________________________________________________________________________________________
