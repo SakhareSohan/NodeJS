@@ -1,0 +1,47 @@
+******************************************************************************************
+Normalization is a process in database design to organize data to reduce redundancy and improve data integrity. It involves dividing a database into two or more tables and defining relationships between the tables. The goal is to minimize duplicate data and ensure data dependencies make sense.
+******************************************************************************************
+Function Body:
+> CREATE OR REPLACE FUNCTION add_numbers(a INT, b INT): Defines the function name and its parameters.
+> RETURNS INT: Specifies that the function returns an integer.
+> $$ ... $$: Delimiters for the function body.
+> BEGIN ... END: Block that contains the function logic.
+> LANGUAGE plpgsql: Specifies the language used for the function.
+> DECLARE: Section where we declare variables. Here, we declare result to store the factorial result and i to use as a loop counter.
+> BEGIN ... END: Block that contains the function logic.
+> IF ... THEN ... END IF: Control structure for checking invalid input.
+> FOR ... IN ... LOOP ... END LOOP: Loop structure to calculate the factorial.
+> RAISE EXCEPTION: Statement to handle errors by raising an exception if the input is negative.
+_____________________________________________________________________________________________________________________
+
+CREATE OR REPLACE FUNCTION calculate_factorial(n INT)
+RETURNS BIGINT AS $$
+DECLARE
+    result BIGINT := 1;
+    i INT;
+BEGIN
+    -- Check for invalid input
+    IF n < 0 THEN
+        RAISE EXCEPTION 'Input must be non-negative';
+    END IF;
+
+    -- Calculate factorial using a loop
+    FOR i IN 1..n LOOP
+        result := result * i;
+    END LOOP;
+
+    RETURN result;
+END;
+$$ LANGUAGE plpgsql;
+_____________________________________________________________________________________________________________________
+
+Using Function:
+SELECT calculate_factorial(5) AS result;
+
+_____________________________________________________________________________________________________________________
+
+Dropping Function:
+drop function function_name();
+
+-----------------------------------------------------------------
+
