@@ -1,18 +1,3 @@
-Normalization is a process in database design that organizes columns (attributes) and tables (relations) to minimize redundancy and dependency. It divides large tables into smaller tables and defines relationships among them. The goal is to isolate data so that additions, deletions, and modifications of a field can be made in just one table and then propagated through the rest of the database via defined relationships.
-_____________________________________________________________________________________________________________________
-
-Summary of Challenges and Solutions
-
-> Identifying Multi-Valued Attributes: Recognizing and eliminating multi-valued attributes can be challenging, especially in large databases. Solution: Break down the attributes into separate tables.
-
-> Handling Composite Keys: Composite keys can create partial dependencies, making it difficult to achieve 2NF. Solution: Ensure all non-key attributes are fully dependent on the entire primary key.
-
-> Eliminating Transitive Dependencies: Identifying and eliminating transitive dependencies requires a thorough understanding of the data relationships. Solution: Regularly review and refactor the database schema to remove unnecessary dependencies.
-
-> Maintaining Data Integrity: Normalization can lead to a higher number of tables and more complex joins, which might affect performance and data integrity. Solution: Use foreign keys and constraints to maintain data integrity, and optimize queries for performance.
-
-_____________________________________________________________________________________________________________________
-
 non-Normalized:
 create table student(student_id serial primary key, name varchar(100) not null, email varchar(100) not null, phone_numbers int[] not null);
 
