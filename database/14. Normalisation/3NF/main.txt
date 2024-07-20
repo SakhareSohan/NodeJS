@@ -1,0 +1,41 @@
+Third Normal Form (3NF)
+Objective: Ensure that no transitive dependencies exist, meaning non-key columns must not depend on other non-key columns.
+_____________________________________________________________________________________________________________________
+Steps to Achieve 3NF:
+
+> Meet all requirements of the 2NF.
+> Remove transitive dependencies: Ensure that non-key attributes do not depend on other non-key attributes.
+_____________________________________________________________________________________________________________________
+
+Example and Challenges:
+
+2NF:
+
+CREATE TABLE courses (
+    course_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT NOT NULL,
+    department_id INT NOT NULL
+);
+
+CREATE TABLE departments (
+    department_id SERIAL PRIMARY KEY,
+    department_name VARCHAR(100) NOT NULL,
+    department_head INT NOT NULL
+);
+
+3NF:
+
+-- Remove transitive dependencies
+CREATE TABLE courses (
+    course_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT NOT NULL,
+    department_id INT REFERENCES departments(department_id)
+);
+
+CREATE TABLE departments (
+    department_id SERIAL PRIMARY KEY,
+    department_name VARCHAR(100) NOT NULL,
+    department_head INT REFERENCES instructors(instructor_id)
+);

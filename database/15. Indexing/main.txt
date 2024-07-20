@@ -1,0 +1,39 @@
+Indexing is a database optimization technique used to speed up the retrieval of rows from a database table. An index is a data structure that improves the speed of data retrieval operations on a database table at the cost of additional space and reduced performance on data modification operations (like INSERT, UPDATE, DELETE).
+_____________________________________________________________________________________________________________________
+
+> Faster Query Performance: Indexes help speed up the retrieval of rows by providing a quick lookup capability.
+> Efficiency in Searching: They make searching for specific values in a large dataset much faster.
+> Improved Sort Performance: Indexes can improve the performance of ORDER BY and GROUP BY clauses.
+
+_____________________________________________________________________________________________________________________
+
+Considerations for Indexing
+Performance Trade-offs:
+> Read vs. Write Performance: Indexes improve read operations but can slow down write operations (INSERT, UPDATE, DELETE).
+Choose carefully which columns to index based on query patterns.
+
+> Space Overhead:
+Indexes consume additional disk space. Monitor the size of your indexes to ensure they don’t grow excessively.
+
+> Cardinality:
+High cardinality (many unique values) columns are better candidates for indexing compared to low cardinality (few unique values) columns.
+
+> Selectivity:
+The selectivity of an index indicates how many distinct values exist in the indexed column(s). Higher selectivity usually results in better performance.
+_____________________________________________________________________________________________________________________
+
+Best Practices for Indexing
+> Index Frequently Queried Columns:
+Index columns that are often used in WHERE clauses, JOIN conditions, and ORDER BY clauses.
+> Avoid Over-Indexing:
+Only create indexes that provide significant performance benefits. Too many indexes can degrade performance.
+> Monitor Index Usage:
+Use database tools and performance metrics to monitor how often indexes are used and their impact on query performance.
+> Consider Composite Indexes:
+If your queries often filter on multiple columns, consider creating composite indexes.
+> Regularly Review and Optimize:
+Periodically review your indexing strategy and adjust based on changes in query patterns and data growth.
+_____________________________________________________________________________________________________________________
+
+CREATE INDEX index_name ON table_name (column_name);
+_____________________________________________________________________________________________________________________

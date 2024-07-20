@@ -1,0 +1,26 @@
+CREATE DATABASE db_name  
+OWNER =  role_name  
+TEMPLATE = template           
+ENCODING = encoding           
+LC_COLLATE = collate              
+LC_CTYPE = ctype  
+TABLESPACE = tablespace_name  
+CONNECTION LIMIT = max_concurrent_connection  
+
+
+Parameters	Description
+db_name 	We will use this parameter to specify the new database name, which we want to create. And we also ensure that the database must be unique because If we try to create a new database with the same name as an existing database, it will show an error.
+
+role_name	It is used to describe the role name for the user who will have the new database, and by default, it is postgres.
+
+Template	While creating the new database, we will require database template name.
+
+Encoding	It is used to describe the character set encoding for the new database, and by default, it is UTF8.
+
+Collate	It is used to define the sort order of strings that mark the result of the ORDER BY clause if we are using a SELECT statement.
+
+Ctype	This parameter is used to display the character classification for the new database.
+
+tablespace_name	It is used to define the tablespace name for the new database, and by default, it is the template database's tablespace.
+
+max_concurrent_connection	This parameter is used to define the maximum parallel connections of a new database, and by default, it is -1 (unlimited).

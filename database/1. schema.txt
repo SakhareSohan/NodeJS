@@ -1,0 +1,16 @@
+> The end-users can use only those schemas that allow the separation of test tables and logic from production tables.
+In the schema, we can efficiently achieve the data and can be applied to some of the following activities:
+> We can quickly restore data, which is present in a distinct schema. Thus, the application-oriented schemas can be individually returned and backed up for recovery and time travel.
+> When the application data is in a schema, we can manage the application changes. Therefore, a new version of the application can work on the table structure in a new schema, including a simple modification to the schema name.
+> We can easily take the back-up of data present in a separate schema. And therefore, the unstable data can have several back-up plans from non-volatile data.
+
+The Schema is a namespace which provides several objects such as
+
+Views
+Indexes
+Sequences
+Datatypes
+Operators
+Functions
+Tables
+Other relations.    

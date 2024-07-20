@@ -1,0 +1,39 @@
+Second Normal Form (2NF)
+Objective: Ensure that every non-key column is fully dependent on the primary key. This eliminates partial dependencies on a composite primary key.
+_____________________________________________________________________________________________________________________
+
+Steps to Achieve 2NF:
+
+Meet all requirements of the 1NF.
+Remove partial dependencies: Ensure that all non-key attributes are fully functional dependent on the entire primary key.
+_____________________________________________________________________________________________________________________
+
+Example and Challenges:
+
+1NF:
+
+CREATE TABLE enrollments (
+    enrollment_id SERIAL PRIMARY KEY,
+    student_id INT REFERENCES students(student_id),
+    course_id INT NOT NULL,
+    enrollment_date DATE NOT NULL,
+    grade INT NOT NULL
+);
+
+2NF:
+
+-- Remove partial dependencies by splitting the enrollments table
+CREATE TABLE enrollments (
+    enrollment_id SERIAL PRIMARY KEY,
+    student_id INT REFERENCES students(student_id),
+    course_id INT NOT NULL,
+    enrollment_date DATE NOT NULL
+);
+
+CREATE TABLE student_grades (
+    grade_id SERIAL PRIMARY KEY,
+    student_id INT REFERENCES students(student_id),
+    course_id INT NOT NULL,
+    grade INT NOT NULL
+);
+_____________________________________________________________________________________________________________________

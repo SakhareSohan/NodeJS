@@ -1,0 +1,98 @@
+> Aggregates are functions that perform calculations on a set of values and return a single value. Common examples include SUM, AVG, MIN, MAX, and COUNT. They are often used with the GROUP BY clause to summarize data.
+
+//////////////////////////
+
+>> Common Aggregate Functions:
+
+1. SUM()
+
+Calculates the total sum of a numeric column.
+SELECT SUM(column_name) FROM table_name;
+
+2. AVG()
+
+Calculates the average value of a numeric column.
+SELECT AVG(column_name) FROM table_name;
+
+3. MIN()
+
+Finds the minimum value in a column.
+SELECT MIN(column_name) FROM table_name;
+
+4. MAX()
+
+Finds the maximum value in a column.
+SELECT MAX(column_name) FROM table_name;
+
+5. COUNT()
+
+Counts the number of rows in a column or result set.
+SELECT COUNT(column_name) FROM table_name;
+
+>> Using Aggregates with GROUP BY
+The GROUP BY clause is used in conjunction with aggregate functions to group the result set by one or more columns. This allows you to perform aggregations on subsets of data.
+
+Example: Total Sales by Product
+
+SELECT product_id, SUM(sales_amount) AS total_sales
+FROM sales
+GROUP BY product_id;
+In this example, the SUM(sales_amount) function calculates the total sales for each product_id.
+
+>> HAVING Clause
+The HAVING clause is used to filter groups after they have been formed by the GROUP BY clause. It is similar to the WHERE clause, but HAVING is applied to aggregated data.
+
+Example: Total Sales by Product, Filtered by Minimum Sales
+
+SELECT product_id, SUM(sales_amount) AS total_sales
+FROM sales
+GROUP BY product_id
+HAVING SUM(sales_amount) > 1000;
+In this example, only products with total sales greater than 1000 are included in the result set.
+
+>> Combining Multiple Aggregates
+You can combine multiple aggregate functions in a single query to get different summaries of the data.
+
+Example: Multiple Aggregates
+
+SELECT 
+    product_id,
+    COUNT(*) AS num_sales,
+    SUM(sales_amount) AS total_sales,
+    AVG(sales_amount) AS avg_sales
+FROM sales
+GROUP BY product_id;
+This query returns the number of sales, total sales amount, and average sales amount for each product.
+
+>> Window Functions
+Window functions allow you to perform aggregations across a set of table rows that are somehow related to the current row. Unlike regular aggregate functions, window functions do not cause rows to become grouped into a single output row—the rows retain their separate identities.
+
+Example: Running Total
+
+SELECT 
+    order_id,
+    order_date,
+    sales_amount,
+    SUM(sales_amount) OVER (ORDER BY order_date) AS running_total
+FROM sales;
+In this example, SUM(sales_amount) OVER (ORDER BY order_date) calculates a running total of sales amounts ordered by the order_date.
+
+>> Practical Examples:
+
+A. Total Number of Employees in Each Department
+
+SELECT department_id, COUNT(*) AS num_employees
+FROM employees
+GROUP BY department_id;
+
+B. Average Salary by Department
+
+SELECT department_id, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department_id;
+
+C. Total Sales and Average Sales for Each Salesperson
+
+SELECT salesperson_id, SUM(sales_amount) AS total_sales, AVG(sales_amount) AS avg_sales
+FROM sales
+GROUP BY salesperson_id;

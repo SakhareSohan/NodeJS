@@ -1,0 +1,104 @@
+Arrays
+Arrays are a fundamental type of collection in PostgreSQL. They allow you to store multiple values of the same data type in a single field.
+
+Creating and Inserting Arrays
+You can define an array in a table schema and insert data into it.
+
+Example Table with Array
+
+CREATE TABLE employees (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    phone_numbers TEXT[]
+);
+
+Inserting Data into Array
+
+INSERT INTO employees (name, phone_numbers)
+VALUES ('John Doe', '{"123-456-7890", "987-654-3210"}');
+
+Querying Arrays
+You can query arrays using various operators and functions.
+
+Selecting Specific Array Elements
+
+SELECT name, phone_numbers[1] AS primary_phone
+FROM employees;
+
+Filtering Rows Based on Array Content
+
+SELECT * 
+FROM employees 
+WHERE '123-456-7890' = ANY (phone_numbers);
+
+///////////////////////////////////////////////////////////////
+
+Array Functions and Operators
+PostgreSQL provides numerous functions and operators for working with arrays.
+
+Array Functions
+> array_length(arr, dim): Returns the length of the specified dimension of the array.
+> array_append(arr, value): Appends a new element to the array.
+> array_remove(arr, value): Removes the specified value from the array.
+> array_replace(arr, current_value, new_value): Replaces old value with new
+
+//////////////////////////////////////////////////////////////
+
+> Multidimensional Arrays
+PostgreSQL also supports multidimensional arrays, which can be useful for storing matrix-like data structures.
+
+Example of Multidimensional Array
+
+CREATE TABLE matrix (
+    id SERIAL PRIMARY KEY,
+    data INT[][]
+);
+
+INSERT INTO matrix (data)
+VALUES ('{{1,2,3},{4,5,6},{7,8,9}}');
+
+Arrays in Queries and Updates
+You can use arrays in various SQL operations, including updates and conditions.
+
+Updating Array Elements
+
+UPDATE employees
+SET phone_numbers[1] = '111-111-1111'
+WHERE name = 'John Doe';
+
+Checking Array Length in Conditions
+
+SELECT name 
+FROM employees 
+WHERE array_length(phone_numbers, 1) > 1;
+
+////////////////////////////////////////////////////////////////////
+
+JSON and JSONB Data Types
+Besides arrays, PostgreSQL also supports JSON and JSONB data types for handling collections of key-value pairs.
+
+Creating a Table with JSON
+
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    customer_name VARCHAR(100),
+    order_details JSONB
+);
+
+Inserting JSON Data
+
+INSERT INTO orders (customer_name, order_details)
+VALUES ('Alice', '{"items": ["apple", "banana"], "total": 25.50}');
+
+Querying JSON Data
+You can query and manipulate JSON data using various functions and operators.
+
+Example Query
+
+SELECT customer_name, order_details->'items' AS items
+FROM orders;
+
+> JSON Functions and Operators
+->: Extracts a JSON object field.
+->>: Extracts a JSON object field as text.
+#>>: Extracts a JSON sub-element as text.   
