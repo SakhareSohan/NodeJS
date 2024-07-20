@@ -351,6 +351,7 @@ SELECT: Retrieve data from the database.
 INSERT: Insert new data into the database.
 UPDATE: Update existing data within the database.
 DELETE: Delete data from the database.
+
 DCL (Data Control Language): Commands that control access to the data.
 
 GRANT: Give user's access privileges to the database.
